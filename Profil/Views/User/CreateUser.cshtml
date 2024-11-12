@@ -1,0 +1,19 @@
+﻿@model User
+
+<h2>Create User</h2>
+
+<form asp-action="CreateUser" asp-controller="User" enctype="multipart/form-data" method="post">
+    <div>
+        <label asp-for="UserName">User Name:</label>
+        <input asp-for="UserName" />
+    </div>
+    <div>
+        <label asp-for="Age">Age:</label>
+        <input asp-for="Age" type="number" />
+    </div>
+    <div>
+        <label>User Image:</label>
+        <input type="file" name="UserImage" />
+    </div>
+    <button type="submit">Save</button>
+</form>
