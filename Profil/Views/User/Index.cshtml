@@ -1,0 +1,31 @@
+﻿@model IQueryable<User>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Users</h2>
+
+    <div class="row">
+        @foreach (var user in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center shadow">
+                    <div class="card-body d-flex flex-column align-items-center">
+                        <!-- Perfectly Circular Image Thumbnail, Centered -->
+                        <img src="/uploads/@user.UserImage" alt="User Image"
+                             class="border img-thumbnail mb-3"
+                             style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" />
+
+                        <!-- Centered User Information -->
+                        <div class="mt-auto">
+                            <h5 class="card-title">@user.UserName</h5>
+                            <p class="card-text"><strong>Age:</strong> @user.Age</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center mt-4">
+        <a asp-controller="User" asp-action="CreateUser" class="btn btn-primary">Create User</a>
+    </div>
+</div>

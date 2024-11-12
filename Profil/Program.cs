@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Profil.Brokers.Storages;
+using Profil.Services.Foundations.Users;
 
 public class Program
 {
@@ -9,10 +11,16 @@ public class Program
 
         builder.Services.AddControllersWithViews();
 
+        builder.Services.AddTransient<IStorageBroker, StorageBroker>();
+
+        builder.Services.AddTransient<IUserService, UserService>();
+
         var app = builder.Build();
 
+        app.UseStaticFiles();
+
         app.MapControllerRoute(name: "def",
-            pattern: "{controller=Home}/{action=Index}/{id?}");
+            pattern: "{controller=User}/{action=Index}/{id?}");
 
         app.Run();
     }
